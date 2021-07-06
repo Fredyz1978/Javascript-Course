@@ -93,8 +93,40 @@ let res=add.call(cadena, "Hola Mundo");
 console.log(res); 
 
 // Ejercicio 4
+class user{
+  constructor(username,password){
+    this.username=username;
+    this.password=password;  
+  }
+
+  login(){
+    if(this.username=="admin" && this.password=="passwd"){
+      console.log("El usuario se encuentra logueado.");
+    }
+    else{
+      console.log("El usuario y/o password son incorrectos.");
+    }
+  }
+}
+
+//prueba login CORRECTO
+let newLoginCorrecto=new user("admin","passwd");
+newLoginCorrecto.login();
+
+//prueba login INCORRECTO
+let newLoginIncorrecto=new user("pepe","bad");
+newLoginIncorrecto.login();
 
 // Ejercicio 5
+function loginCorrecto(){
+  let newLoginCorrecto=new user("admin","passwd");
+  newLoginCorrecto.login();
+}
+
+function loginIncorrecto(){
+  let newLoginCorrecto=new user("pepe","bad");
+  newLoginCorrecto.login();
+}
 
 // Ejercicio 6
 
