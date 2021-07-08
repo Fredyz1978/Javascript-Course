@@ -118,26 +118,41 @@ let newLoginIncorrecto=new user("pepe","bad");
 newLoginIncorrecto.login();
 
 // Ejercicio 5
-function loginCorrecto(){
+document.getElementById("loginSuccess").addEventListener("click", function loginCorrecto(){
   let newLoginCorrecto=new user("admin","passwd");
   newLoginCorrecto.login();
-}
+});
 
-function loginIncorrecto(){
+document.getElementById("loginFailure").addEventListener("click", function loginCorrecto(){
   let newLoginCorrecto=new user("pepe","bad");
   newLoginCorrecto.login();
-}
+});
 
 // Ejercicio 6
+let loginWitUsername = (username, password) => {
+    return new Promise(function (resolve, rejected) {
+      setTimeout(() => {
+        if (username === "admin" && password === "passwd") {
+          resolve("User logged in");
+        } else {
+          rejected("Error: invalid username or password");
+        }
+      }, 200);
+    });
+};
 
-//let loginWitUsername = (username, password) => {
-//    return new Promise(function (resolve, rejected) {
-//      setTimeout(() => {
-//        if (username === "admin" && password === "passwd") {
-//          resolve("User logged in");
-//        } else {
-//          rejected("Error: invalid username or password");
-//        }
-//      }, 200);
-//    });
-//};
+document.getElementById("loginSuccessAsync").addEventListener("click",async ()=>{
+  let res=await loginWitUsername("admin","passwd");
+  console.log(res); 
+})
+
+document.getElementById("loginFailureAsync").addEventListener("click",async ()=>{
+  try{
+    let res=await loginWitUsername("fredy","1234")
+    console.log(res); 
+  }
+  catch(ex){
+    console.log("Ha ocurrido un error:"+ex);
+  }
+})
+
